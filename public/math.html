@@ -342,10 +342,10 @@
   </div>
 
   <!-- Search Section -->
+<!-- Search Section -->
 <div id="searchContent" class="content-section">
-  <input type="text" class="search-bar" placeholder="Search (no function yet)..." />
+  <iframe src="/test.html" width="100%" height="600px"></iframe>
 </div>
-
 
   <script>
     const loadingOverlay = document.querySelector('.loading-overlay');
@@ -432,11 +432,10 @@
 
     renderGames(games);
 
-    const homeTab = document.getElementById("homeTab");
-    const gamesTab = document.getElementById("gamesTab");
-    const searchTab = document.getElementById("searchTab");
-    const gamesContent = document.getElementById("gamesContent");
-
+const homeTab = document.getElementById("homeTab");
+const gamesTab = document.getElementById("gamesTab");
+const searchTab = document.getElementById("searchTab");
+const gamesContent = document.getElementById("gamesContent");
 const searchContent = document.getElementById("searchContent");
 
 homeTab.addEventListener("click", function () {
@@ -462,6 +461,7 @@ searchTab.addEventListener("click", function () {
   gamesTab.classList.remove("active");
   searchTab.classList.add("active");
 });
+
 
 
     const searchGames = document.getElementById('searchGames');
