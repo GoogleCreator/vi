@@ -374,28 +374,26 @@
       "Initiating site..."
     ];
 
-window.onload = function () {
-  // Show each message every 2.5 seconds
-  loadingMessages.forEach((msg, index) => {
-    setTimeout(() => {
-      loadingText.textContent = msg;
-    }, index * 2500);
-  });
+    window.onload = function () {
+      // Show each message every 2.5 seconds
+      loadingMessages.forEach((msg, index) => {
+        setTimeout(() => {
+          loadingText.textContent = msg;
+        }, index * 2500);
+      });
 
-  // Hide overlay after 10 seconds with smoother transition
-  setTimeout(() => {
-    // First, animate opacity to 0
-    loadingOverlay.style.transition = 'opacity 1s ease-out, visibility 1s ease-out';
-    loadingOverlay.style.opacity = '0';
+      // Hide overlay after 10 seconds
+      setTimeout(() => {
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => {
+          loadingOverlay.style.display = 'none';
+          titleContainer.style.visibility = 'visible';
+          titleContainer.style.opacity = '1';
+        }, 1000);
+      }, 10000);
+    };
 
-    // Then, hide the overlay after the transition is complete
-    setTimeout(() => {
-      loadingOverlay.style.display = 'none';
-      titleContainer.style.visibility = 'visible';
-      titleContainer.style.opacity = '1';
-    }, 1000); // This matches the duration of the opacity transition
-  }, 10000);
-};
+
 
     const games = [
       { title: "Liquid Soccer", src: "/play/liquid/liquid.html", img: "/img/liquid.jpg" },
@@ -491,72 +489,6 @@ searchTab.addEventListener("click", function () {
     });
 
     // search tab search function
-const searchTab = document.getElementById("searchTab");
-const searchContent = document.getElementById("searchContent");
-const searchGames = document.getElementById('searchGames');
-const frame = document.querySelector("iframe");
-const div = document.querySelector(".center-container");
-
-// Hide the iframe initially
-frame.style.display = "none";
-
-// Show search content when the search tab is clicked
-searchTab.addEventListener("click", function () {
-  gamesContent.classList.remove("active");
-  searchContent.classList.add("active");
-  homeTab.classList.remove("active");
-  gamesTab.classList.remove("active");
-  searchTab.classList.add("active");
-});
-
-// Listen for input in the search bar and perform the search when the user types
-searchGames.addEventListener('input', function (event) {
-  const searchQuery = event.target.value.trim().toLowerCase();
-  if (searchQuery) {
-    // Direct search in games (if matches found)
-    const filteredGames = games.filter(game => game.title.toLowerCase().includes(searchQuery));
-    renderGames(filteredGames);
-  } else {
-    // If the search bar is empty, render all games
-    renderGames(games);
-  }
-});
-
-// Allow the user to press Enter to search and show iframe with the result
-searchGames.addEventListener('keydown', function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault(); // Prevent the default action of the Enter key (like submitting a form)
-
-    const searchQuery = searchGames.value.trim();
-    if (searchQuery) {
-      // Treat it as a URL search if it’s a valid URL
-      let searchUrl = search(searchQuery);
-      div.style.display = 'none';
-      frame.style.display = 'block';
-      frame.src = searchUrl;
-    }
-  }
-});
-
-// If the URL query parameter is set (i.e., ?q=search_term)
-const params = new URLSearchParams(window.location.search);
-if (params.get("q")) {
-  const searchQuery = params.get("q");
-  div.style.display = 'none';
-  frame.style.display = 'block';
-  frame.src = search(searchQuery);
-}
-
-// Function to handle search logic
-function search(query) {
-  try {
-    // Check if the input is a valid URL (https://example.com)
-    return new URL(query).toString();
-  } catch (err) {
-    // If not a valid URL, perform a Google search
-    return `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-  }
-}
 
   </script>
 </body>
