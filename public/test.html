@@ -60,19 +60,23 @@
       z-index: 1; /* Behind the search bar */
     }
 
-    /* Search Bar in Bottom Right when Iframe is Visible */
-    .search-bar-container {
-      position: fixed;
-      bottom: 20px;
+    /* Close Button */
+    .close-btn {
+      position: absolute;
+      top: 20px;
       right: 20px;
-      width: 250px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 2;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      z-index: 3;
     }
 
-    .search-bar-container.visible {
-      opacity: 0.7;
+    .close-btn:hover {
+      background-color: #ff3333;
     }
   </style>
 </head>
@@ -83,24 +87,21 @@
   </div>
   <iframe class="frame"></iframe>
 
-  <!-- Search Bar Container in Bottom Right -->
-  <div class="search-bar-container">
-    <input class="pxyinput" type="text" placeholder="Go to site..." />
-  </div>
+  <!-- Close Button for the iframe -->
+  <button class="close-btn" id="closeIframe">X</button>
 
   <script src="./js/index.js"></script>
   <script src="./js/search.js"></script>
 
   <script>
     const iframe = document.querySelector('.frame');
-    const searchBarContainer = document.querySelector('.search-bar-container');
+    const closeButton = document.getElementById('closeIframe');
 
-    // When iframe is visible, make the search bar container have opacity
-    iframe.onload = function () {
-      searchBarContainer.classList.add('visible');
-    };
-
-    // You can add a condition to reset opacity if iframe is not visible or other actions.
+    // Close the iframe when the close button is clicked
+    closeButton.addEventListener('click', function () {
+      iframe.style.display = 'none'; // Hides the iframe
+      closeButton.style.display = 'none'; // Hides the close button
+    });
   </script>
 </body>
 </html>
