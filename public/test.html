@@ -1,12 +1,80 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png" />
   <title>Art Class</title>
   <script src="/uv/uv.bundle.js" charset="UTF-8"></script>
   <script src="/uv/uv.config.js"></script>
   <script src="./js/preload.js"></script>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 0;
+      position: relative;
+      flex-direction: column;
+      overflow: hidden; /* Ensures no scrolling */
+    }
+
+    /* Centered Container */
+    .center-container {
+      width: 80%;
+      max-width: 500px;
+      padding: 10px;
+      background-color: #222;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+      z-index: 2; /* To ensure search bar stays on top */
+      position: relative;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Search Bar */
+    .pxyinput {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #333;
+      background-color: #222;
+      color: white;
+      font-size: 1.2em;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    /* Iframe Styling */
+    .frame {
+      width: 100vw; /* Full width of the viewport */
+      height: 100vh; /* Full height of the viewport */
+      border: none;
+      position: absolute; /* Positioned absolutely to fill the screen */
+      top: 0;
+      left: 0;
+      z-index: 1; /* Behind the search bar */
+    }
+
+    /* Search Bar in Bottom Right when Iframe is Visible */
+    .search-bar-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 250px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+
+    .search-bar-container.visible {
+      opacity: 0.7;
+    }
+  </style>
 </head>
 
 <body theme="main">
@@ -14,9 +82,25 @@
     <input class="pxyinput" type="text" placeholder="Search..." />
   </div>
   <iframe class="frame"></iframe>
+
+  <!-- Search Bar Container in Bottom Right -->
+  <div class="search-bar-container">
+    <input class="pxyinput" type="text" placeholder="Go to site..." />
+  </div>
+
+  <script src="./js/index.js"></script>
+  <script src="./js/search.js"></script>
+
+  <script>
+    const iframe = document.querySelector('.frame');
+    const searchBarContainer = document.querySelector('.search-bar-container');
+
+    // When iframe is visible, make the search bar container have opacity
+    iframe.onload = function () {
+      searchBarContainer.classList.add('visible');
+    };
+
+    // You can add a condition to reset opacity if iframe is not visible or other actions.
+  </script>
 </body>
-
-<script src="./js/index.js"></script>
-<script src="./js/search.js"></script>
-
 </html>
