@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reynolds.k12.or.us%2Fdistrict%2Fschoology&psig=AOvVaw0eFu3UN_tu1TM-opJ_03eb&ust=1745927543770000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjl1YrV-owDFQAAAAAdAAAAABAE">
   <title>Home | Schoology</title>
+  <script src="/uv/uv.bundle.js" charset="UTF-8"></script>
+  <script src="/uv/uv.config.js"></script>
+  <script src="./js/preload.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <style>
     body {
@@ -208,6 +211,19 @@
       display: block;
       margin: 0 auto;
     }
+    
+    .pxyinput {
+      width: 80%;
+      max-width: 500px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background-color: #222;
+      color: white;
+      font-size: 1.2em;
+      display: block;
+      margin: 0 auto;
+    }
 
     .games-list {
       display: flex;
@@ -338,15 +354,16 @@
   <!-- Iframe Overlay for opening games -->
   <div id="iframeOverlay">
     <button id="closeGame">Close</button>
-    <iframe id="gameIframe" src=""></iframe>
+    <iframe id="gameIframe" class="frame" src=""></iframe>
   </div>
 
   <!-- Search Section -->
 <div id="searchContent" class="content-section">
-  <input type="text" class="search-bar" placeholder="Search (no function yet)..." />
+  <input type="text" class="pxyinput" placeholder="Search (no function yet)..." />
 </div>
 
-
+<script src="./js/index.js"></script>
+<script src="./js/search.js"></script>
   <script>
     const loadingOverlay = document.querySelector('.loading-overlay');
     const titleContainer = document.querySelector('.title-container');
