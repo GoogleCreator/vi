@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reynolds.k12.or.us%2Fdistrict%2Fschoology&psig=AOvVaw0eFu3UN_tu1TM-opJ_03eb&ust=1745927543770000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjl1YrV-owDFQAAAAAdAAAAABAE">
   <title>Home | Schoology</title>
-  <script src="/uv/uv.bundle.js" charset="UTF-8"></script>
-  <script src="/uv/uv.config.js"></script>
-  <script src="./js/preload.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <style>
     body {
@@ -159,7 +156,7 @@
       100% { width: 100%; background-position: 100% 50%; }
     }
 
-    .center-container {
+    .content-section {
       display: none;
       padding: 20px;
       background-color: #0d0d0d;
@@ -170,11 +167,11 @@
       text-align: center;
     }
 
-    .center-container.active {
+    .content-section.active {
       display: block;
     }
 
-    #gamesContent.center-container {
+    #gamesContent.content-section {
       position: absolute;
       width: 100vw;
       height: 100vh;
@@ -187,7 +184,7 @@
       padding-bottom: 20px;
     }
 
-    #gamesContent.center-container.active {
+    #gamesContent.content-section.active {
       display: block;
     }
 
@@ -200,19 +197,6 @@
     }
 
     .search-bar {
-      width: 80%;
-      max-width: 500px;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #333;
-      background-color: #222;
-      color: white;
-      font-size: 1.2em;
-      display: block;
-      margin: 0 auto;
-    }
-    
-    .pxyinput {
       width: 80%;
       max-width: 500px;
       padding: 10px;
@@ -344,7 +328,7 @@
   </div>
 
   <!-- Games Section -->
-  <div id="gamesContent" class="center-container">
+  <div id="gamesContent" class="content-section">
     <div class="games-inner-wrapper">
       <input type="text" class="search-bar" id="searchGames" placeholder="Search games..." />
       <div class="games-list" id="gamesList"></div>
@@ -354,15 +338,14 @@
   <!-- Iframe Overlay for opening games -->
   <div id="iframeOverlay">
     <button id="closeGame">Close</button>
-    <iframe id="gameIframe" class="frame" src=""></iframe>
+    <iframe id="gameIframe" src=""></iframe>
   </div>
 
   <!-- Search Section -->
-<div id="searchContent" class="center-container">
-  <input type="text" class="pxyinput" placeholder="Search (no function yet)..." />
+<div id="searchContent" class="content-section">
+  <input type="text" class="search-bar" placeholder="Search (no function yet)..." />
 </div>
 
-  <script src="./js/search.js"></script>
 
   <script>
     const loadingOverlay = document.querySelector('.loading-overlay');
@@ -394,8 +377,6 @@
         }, 1000);
       }, 10000);
     };
-
-
 
     const games = [
       { title: "Liquid Soccer", src: "/play/liquid/liquid.html", img: "/img/liquid.jpg" },
@@ -489,9 +470,6 @@ searchTab.addEventListener("click", function () {
       const filteredGames = games.filter(game => game.title.toLowerCase().includes(searchQuery));
       renderGames(filteredGames);
     });
-
-    // search tab search function
-
   </script>
 </body>
 </html>
