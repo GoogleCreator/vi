@@ -374,24 +374,28 @@
       "Initiating site..."
     ];
 
-    window.onload = function () {
-      // Show each message every 2.5 seconds
-      loadingMessages.forEach((msg, index) => {
-        setTimeout(() => {
-          loadingText.textContent = msg;
-        }, index * 2500);
-      });
+window.onload = function () {
+  // Show each message every 2.5 seconds
+  loadingMessages.forEach((msg, index) => {
+    setTimeout(() => {
+      loadingText.textContent = msg;
+    }, index * 2500);
+  });
 
-      // Hide overlay after 10 seconds
-      setTimeout(() => {
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => {
-          loadingOverlay.style.display = 'none';
-          titleContainer.style.visibility = 'visible';
-          titleContainer.style.opacity = '1';
-        }, 1000);
-      }, 10000);
-    };
+  // Hide overlay after 10 seconds with smoother transition
+  setTimeout(() => {
+    // First, animate opacity to 0
+    loadingOverlay.style.transition = 'opacity 1s ease-out, visibility 1s ease-out';
+    loadingOverlay.style.opacity = '0';
+
+    // Then, hide the overlay after the transition is complete
+    setTimeout(() => {
+      loadingOverlay.style.display = 'none';
+      titleContainer.style.visibility = 'visible';
+      titleContainer.style.opacity = '1';
+    }, 1000); // This matches the duration of the opacity transition
+  }, 10000);
+};
 
     const games = [
       { title: "Liquid Soccer", src: "/play/liquid/liquid.html", img: "/img/liquid.jpg" },
