@@ -93,15 +93,35 @@
   <script src="./js/index.js"></script>
   <script src="./js/search.js"></script>
 
-  <script>
-    const iframe = document.querySelector('.frame');
-    const closeButton = document.getElementById('closeIframe');
+<script>
+  const iframe = document.querySelector('.frame');
+  const closeButton = document.getElementById('closeIframe');
 
-    // Close the iframe when the close button is clicked
-    closeButton.addEventListener('click', function () {
-      iframe.style.display = 'none'; // Hides the iframe
-      closeButton.style.display = 'none'; // Hides the close button
-    });
-  </script>
+  // Function to toggle iframe visibility
+  function toggleIframeVisibility() {
+    if (iframe.style.display === 'none') {
+      iframe.style.display = 'block'; // Show the iframe
+      closeButton.style.display = 'block'; // Show the close button
+    } else {
+      iframe.style.display = 'none'; // Hide the iframe
+      closeButton.style.display = 'none'; // Hide the close button
+    }
+  }
+
+  // Close the iframe when the close button is clicked
+  closeButton.addEventListener('click', function () {
+    iframe.style.display = 'none'; // Hide the iframe
+    closeButton.style.display = 'none'; // Hide the close button
+  });
+
+  // Initially hide the iframe and close button
+  iframe.style.display = 'none';
+  closeButton.style.display = 'none';
+
+  // Example of triggering iframe visibility
+  // You can call this function when you want to show the iframe (like when searching)
+  // For example, toggleIframeVisibility(); when the user interacts with the search bar or another event
+</script>
+
 </body>
 </html>
