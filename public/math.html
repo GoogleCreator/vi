@@ -308,13 +308,21 @@
       opacity: 1;
     }
 
-    #searchContent iframe {
-  width: 100vw; /* Full width of the screen */
-  height: 600px; /* Height of the iframe (you can change this as needed) */
-  border: none; /* Removes border */
-  outline: none; /* Removes the outline */
-}
+    /* Search Content iframe */
+    #searchContent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+    }
 
+    #searchContent iframe {
+      width: 100vw; /* Full width of the screen */
+      height: 600px; /* Height of the iframe (you can change this as needed) */
+      border: none; /* Removes border */
+      outline: none; /* Removes the outline */
+    }
   </style>
 </head>
 <body>
@@ -350,10 +358,9 @@
   </div>
 
   <!-- Search Section -->
-<!-- Search Section -->
-<div id="searchContent" class="content-section">
-  <iframe src="/test.html" class=""></iframe>
-</div>
+  <div id="searchContent" class="content-section">
+    <iframe src="/test.html" width="100%" height="600px"></iframe>
+  </div>
 
   <script>
     const loadingOverlay = document.querySelector('.loading-overlay');
@@ -440,43 +447,34 @@
 
     renderGames(games);
 
-const homeTab = document.getElementById("homeTab");
-const gamesTab = document.getElementById("gamesTab");
-const searchTab = document.getElementById("searchTab");
-const gamesContent = document.getElementById("gamesContent");
-const searchContent = document.getElementById("searchContent");
+    const homeTab = document.getElementById("homeTab");
+    const gamesTab = document.getElementById("gamesTab");
+    const searchTab = document.getElementById("searchTab");
+    const gamesContent = document.getElementById("gamesContent");
+    const searchContent = document.getElementById("searchContent");
 
-homeTab.addEventListener("click", function () {
-  gamesContent.classList.remove("active");
-  searchContent.classList.remove("active");
-  homeTab.classList.add("active");
-  gamesTab.classList.remove("active");
-  searchTab.classList.remove("active");
-});
+    homeTab.addEventListener("click", function () {
+      gamesContent.classList.remove("active");
+      searchContent.classList.remove("active");
+      homeTab.classList.add("active");
+      gamesTab.classList.remove("active");
+      searchTab.classList.remove("active");
+    });
 
-gamesTab.addEventListener("click", function () {
-  gamesContent.classList.add("active");
-  searchContent.classList.remove("active");
-  homeTab.classList.remove("active");
-  gamesTab.classList.add("active");
-  searchTab.classList.remove("active");
-});
+    gamesTab.addEventListener("click", function () {
+      gamesContent.classList.add("active");
+      searchContent.classList.remove("active");
+      homeTab.classList.remove("active");
+      gamesTab.classList.add("active");
+      searchTab.classList.remove("active");
+    });
 
-searchTab.addEventListener("click", function () {
-  gamesContent.classList.remove("active");
-  searchContent.classList.add("active");
-  homeTab.classList.remove("active");
-  gamesTab.classList.remove("active");
-  searchTab.classList.add("active");
-});
-
-
-
-    const searchGames = document.getElementById('searchGames');
-    searchGames.addEventListener('input', function (event) {
-      const searchQuery = event.target.value.toLowerCase();
-      const filteredGames = games.filter(game => game.title.toLowerCase().includes(searchQuery));
-      renderGames(filteredGames);
+    searchTab.addEventListener("click", function () {
+      gamesContent.classList.remove("active");
+      searchContent.classList.add("active");
+      homeTab.classList.remove("active");
+      gamesTab.classList.remove("active");
+      searchTab.classList.add("active");
     });
   </script>
 </body>
