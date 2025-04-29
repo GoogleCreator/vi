@@ -341,6 +341,12 @@
     <iframe id="gameIframe" src=""></iframe>
   </div>
 
+  <!-- Search Section -->
+<div id="searchContent" class="content-section">
+  <input type="text" class="search-bar" placeholder="Search (no function yet)..." />
+</div>
+
+
   <script>
     const loadingOverlay = document.querySelector('.loading-overlay');
     const titleContainer = document.querySelector('.title-container');
@@ -375,18 +381,13 @@
     const games = [
       { title: "Liquid Soccer", src: "/play/liquid/liquid.html", img: "/img/liquid.jpg" },
       { title: "Tag", src: "/play/tag/tag.html", img: "/img/splash.jpg" },
-      { title: "Basket Random", src: "/files/basketrandom/index.html", img: "/files/basketrandom/splash.jpeg" },
-      { title: "Monkey Mart", src: "/files/monkeymart/index.html", img: "/img/monkey.jpg" },
-      { title: "Slope", src: "/files/slope/game.html", img: "/files/slope/splash.png" },
       { title: "Snow Rider 3D", src: "/play/Snow-Rider3D-main/index.html", img: "/img/snow.jpg" },
       { title: "Tiny Fishing", src: "/play/index.html", img: "/img/tiny.png" },
-      { title: "COD Zombies", src: "/files/nzp-gay/index.html", img: "/img/cod.png" },
       { title: "Retro Bowl", src: "/play/retro-bowl/index.html", img: "/play/retro-bowl/img/icon.jpg" },
       { title: "Rooftop Snipers", src: "/play/rooftop-snipers/index.html", img: "/play/rooftop-snipers/img/thumb.png" },
       { title: "Dollar Hill Climb Racing", src: "/play/hill-climb-racing/index.html", img: "/play/hill-climb-racing/splash.jpeg" },
       { title: "Subway Surfers", src: "/play/subway-surfers-ny/index.html", img: "/play/subway-surfers-ny/NewYorkIcon.png" },
       { title: "Dogeminer", src: "/play/DogeMiner/index.html", img: "/img/R.png" },
-      { title: "Dogeminer 2", src: "/play/Dogeminer2/index.html", img: "/play/Dogeminer2/thumb.jpg" },
     ];
 
     function renderGames(games) {
@@ -436,19 +437,32 @@
     const searchTab = document.getElementById("searchTab");
     const gamesContent = document.getElementById("gamesContent");
 
-    homeTab.addEventListener("click", function () {
-      gamesContent.classList.remove("active");
-      homeTab.classList.add("active");
-      gamesTab.classList.remove("active");
-      searchTab.classList.remove("active");
-    });
+const searchContent = document.getElementById("searchContent");
 
-    gamesTab.addEventListener("click", function () {
-      gamesContent.classList.add("active");
-      homeTab.classList.remove("active");
-      gamesTab.classList.add("active");
-      searchTab.classList.remove("active");
-    });
+homeTab.addEventListener("click", function () {
+  gamesContent.classList.remove("active");
+  searchContent.classList.remove("active");
+  homeTab.classList.add("active");
+  gamesTab.classList.remove("active");
+  searchTab.classList.remove("active");
+});
+
+gamesTab.addEventListener("click", function () {
+  gamesContent.classList.add("active");
+  searchContent.classList.remove("active");
+  homeTab.classList.remove("active");
+  gamesTab.classList.add("active");
+  searchTab.classList.remove("active");
+});
+
+searchTab.addEventListener("click", function () {
+  gamesContent.classList.remove("active");
+  searchContent.classList.add("active");
+  homeTab.classList.remove("active");
+  gamesTab.classList.remove("active");
+  searchTab.classList.add("active");
+});
+
 
     const searchGames = document.getElementById('searchGames');
     searchGames.addEventListener('input', function (event) {
